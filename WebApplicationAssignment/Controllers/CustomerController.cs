@@ -10,6 +10,8 @@ namespace WebApplicationAssignment.Controllers
     public class CustomerController : Controller
     {
         public static List<Customer> customer = new List<Customer>(); 
+        static int Id=0;
+
         public IActionResult Index()
         {
             return View();
@@ -19,6 +21,7 @@ namespace WebApplicationAssignment.Controllers
         [Route("Get")]
         public IActionResult Get()
         {
+            ViewData["TotalCustomers"] = customer.Count();
             return View(customer);
         }
 
@@ -26,6 +29,8 @@ namespace WebApplicationAssignment.Controllers
         [Route("Create")]
         public IActionResult Create()
         {
+
+           ViewBag.ID = ++Id;
             return View();
         }
 
